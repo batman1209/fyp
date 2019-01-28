@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 import './sidebar.css';
 //import logo from "./img/login1.jpg";
 
@@ -13,17 +14,20 @@ class Sidebar extends React.Component {
                 <div className="sidebar">
                     <div className="sidebar-wrapper">
                         <div className="logo">
+                        <Link className='nav-bar' to="/">
                             {/* <a href="@Url.Action("Admin","Home")"> */}
-
-                            <img className="rounded-circle" src={logo} alt='...' style={{ width: "150px", height: "130px" }} />
+                           <img className="rounded-circle" src={logo} alt='...' style={{ width: "150px", height: "130px" }} />
+                        </Link>
                              <b className="text-center"> ADMIN</b>
                         </div>
                         <ul className="nav">
-                            <li className="w100">
-                                <a className="nav-link" href="">
+                            <li >
+                            <Link className="nav-link" to ="roles">
+                                {/* <a className="nav-link" href=""> */}
                                     <i className="pe-7s-add-user"> </i>
                                     <p >ADD ACCOUNT</p>
-                                </a>
+                                {/* </a> */}
+                            </Link>
                             </li>
                             <li>
                                 <a className="nav-link" href="">
@@ -43,24 +47,30 @@ class Sidebar extends React.Component {
                                     <p>delete user</p>
                                 </a>
                             </li>
-                            <li>
-                                <a className="nav-link" href="#">
-                                    <i className="pe-7s-user"></i>
-                                    <p>teamlead</p>
-                                </a>
+                            <li className="w100">
+                            <Link className="nav-link" to ="../../page/Roles">
+                                {/* <a className="nav-link" href=""> */}
+                                    <i className="pe-7s-add-user"> </i>
+                                    <p >Team LeaD</p>
+                                {/* </a> */}
+                            </Link>
                             </li>
 
                             <li>
-                                <a className="nav-link" href="">
+                            <Link className="nav-link" to="">
+                                {/* <a className="nav-link" href=""> */}
                                     <i className="pe-7s-config"></i>
                                     <p>settings</p>
-                                </a>
+                                {/* </a> */}
+                                </Link>
                             </li>
                             <li>
-                                <a className="nav-link " href="">
+                            <Link className="nav-link" to="">
+                                {/* <a className="nav-link " href=""> */}
                                     <i className="pe-7s-power"></i>
                                     <p>logout</p>
-                                </a>
+                                {/* </a> */}
+                            </Link>
                             </li>
                         </ul>
 
