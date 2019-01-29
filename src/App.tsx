@@ -15,7 +15,11 @@ import Roles from './page/Roles'
 import Adduser from './page/Adduser';
 import Settings from './page/settings';
 import ChangeName from './page/changename';
+<<<<<<< HEAD
 import ChangeMail from './page/changemail';
+=======
+import ChangePass from './page/changepassword';
+>>>>>>> 6f7a00fbf0d85592b59d1b0270123a22f2dce353
 
 class App extends Component {
   render() {
@@ -30,8 +34,13 @@ class App extends Component {
             <Route path="/roles/adduser" exact component={Adduser} />
             {/* <Route path="/login" exact component={Login} /> */}
             <Route path="/settings" exact component={Settings} /> 
+<<<<<<< HEAD
             <Route path="/settings/changename" exact component={ChangeName} />
             <Route path="/settings/changemail" exact component={ChangeMail} /> 
+=======
+            <Route path="/settings/changename" exact component={ChangeName} /> 
+            <Route path="/settings/changepass" exact component={ChangePass} /> 
+>>>>>>> 6f7a00fbf0d85592b59d1b0270123a22f2dce353
           </div>
 
         </div>
