@@ -1,6 +1,6 @@
 import * as React from 'react';
 //import { ReactComponent } from '*.svg';
-import '../css/adduser.css';
+import '../css/form.css';
 
 class Adduser extends React.Component {
     render() {

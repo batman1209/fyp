@@ -15,6 +15,7 @@ import Roles from './page/Roles'
 import Adduser from './page/Adduser';
 import Settings from './page/settings';
 import ChangeName from './page/changename';
+import ChangeMail from './page/changemail';
 
 class App extends Component {
   render() {
@@ -29,7 +30,8 @@ class App extends Component {
             <Route path="/roles/adduser" exact component={Adduser} />
             {/* <Route path="/login" exact component={Login} /> */}
             <Route path="/settings" exact component={Settings} /> 
-            <Route path="/settings/changename" exact component={ChangeName} /> 
+            <Route path="/settings/changename" exact component={ChangeName} />
+            <Route path="/settings/changemail" exact component={ChangeMail} /> 
           </div>
 
         </div>

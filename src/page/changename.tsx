@@ -25,7 +25,7 @@ class ChangeName extends React.Component {
                                     <input type="submit" name="submit" value="DONE" className="btn btn-primary btn-block btn-lg" />
                                     <br />
                                     <div className="col-lg-12">
-                                    <Link className="nav-link" to="settings">
+                                    <Link className="nav-link" to="../settings">
                                     
                                     <button type="button" className="btn btn-primary btn-sm btn-block">  Cancel</button>
                                     </Link>
