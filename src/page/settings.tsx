@@ -7,16 +7,16 @@ class Settings extends React.Component{
             <div className="content" style={{ paddingTop: '70px' }}>
                 <div className="container-fluid">
                     {/* <a href="@Url.Action("Adduser","Home")"> */}
-                    <Link className="nav-link" to="/settings/changeName">
+                    <Link className="nav-link" to="/settings/changename">
                         <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px", color:"White" }}> Change UserName </button>
                     </Link>
                     <br />
-                    <Link className="nav-link" to="/settings/changeEmail">
+                    <Link className="nav-link" to="/settings/changemail">
                         {/* <a href="@Url.Action("Adduser","Home")"> */}
                         <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px", color:"White" }}> Change UserEmail </button>
                     </Link>
                     <br />
-                    <Link className="nav-link" to="/settings/changePass">
+                    <Link className="nav-link" to="/settings/changepass">
                         {/* <a href="@Url.Action("Adduser","Home")">			 */}
                         <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px", color:"White" }}> Change Password </button>
                     </Link>

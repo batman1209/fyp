@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-class ChangeName extends React.Component {
+class ChangePass extends React.Component {
     render() {
         return (
             <div className="content" >
@@ -12,15 +12,21 @@ class ChangeName extends React.Component {
                             <div id="ui">
                                 <h1>SETTINGS</h1>
                                 <form className="form-group" action="settings.cshtml" method="post" >
-                                    <label> Current UserName:</label>
-                                    <div className="name">
-                                        <input type="text" name="username" className="form-control" id="uname" placeholder="Enter username " />
+                                    <label> Current Password:</label>
+                                    <div className="pass">
+					                 <input type="password"  name="pass" className="form-control" id="pwd" placeholder="Enter password" /> 
                                     </div>
                                     <br />
-                                    <label> New UserName:</label>
-                                    <div className="name">
-                                        <input type="text" name="username" className="form-control" id="uname1" placeholder="Enter username " />
+                                    <label> New Password:</label>
+                                    <div className="pass">
+					                 <input type="password"  name="pass" className="form-control" id="pwd" placeholder="Enter password" /> 
                                     </div>
+                                    <br />
+                                    <label> Confirm Password:</label>
+                                    <div className="pass">
+					                 <input type="password"  name="pass" className="form-control" id="pwd" placeholder="Enter password" /> 
+                                    </div>
+                                    
                                     <br />
                                     <input type="submit" name="submit" value="DONE" className="btn btn-primary btn-block btn-lg" />
                                     <br />
@@ -41,5 +47,4 @@ class ChangeName extends React.Component {
         )
     }
 }
-
-export default ChangeName;
+export default ChangePass;
