@@ -57,7 +57,7 @@ class Sidebar extends React.Component {
                             </li>
 
                             <li>
-                            <Link className="nav-link" to="">
+                            <Link className="nav-link" to="settings">
                                 {/* <a className="nav-link" href=""> */}
                                     <i className="pe-7s-config"></i>
                                     <p>settings</p>

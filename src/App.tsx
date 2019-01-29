@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from './Component/sidebar/sidebar';
 import Roles from './page/Roles'
 import Adduser from './page/Adduser';
+import Settings from './page/settings';
 
 class App extends Component {
   render() {
@@ -26,7 +27,7 @@ class App extends Component {
             <Route path="/roles" exact component={Roles} />
             <Route path="/roles/adduser" exact component={Adduser} />
             {/* <Route path="/login" exact component={Login} /> */}
-            {/* <Route path="/Settings" exact component={Roles} /> */}
+            <Route path="/settings" exact component={Settings} /> 
           </div>
 
         </div>
