@@ -11,18 +11,18 @@ class Roles extends React.Component {
             <div className="content" style={{ paddingTop: '70px' }}>
                 <div className="container-fluid">
                     {/* <a href="@Url.Action("Adduser","Home")"> */}
-                    <Link className="nav-link" to="/roles/admin">
-                        <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px" }}> Admin </button>
+                    <Link className="nav-link" to="/roles/Adduser">
+                        <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px", color:"White" }}> Admin </button>
                     </Link>
                     <br />
-                    <Link className="nav-link" to="/Adduser">
+                    <Link className="nav-link" to="/roles/Adduser">
                         {/* <a href="@Url.Action("Adduser","Home")"> */}
-                        <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px" }}> Teacher </button>
+                        <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px", color:"White" }}> Teacher </button>
                     </Link>
                     <br />
-                    <Link className="nav-link" to="/Adduser">
+                    <Link className="nav-link" to="/roles/Adduser">
                         {/* <a href="@Url.Action("Adduser","Home")">			 */}
-                        <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px" }}> TeamLead </button>
+                        <button type="button" className="btn btn-default btn-lg" style={{ backgroundColor: "gray", marginLeft: "30px", marginRight: "30px", marginTop: "30px", marginBottom: "30px", color:"White" }}> TeamLead </button>
                     </Link>
                     <br />
                     <div className="row">

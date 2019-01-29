@@ -12,6 +12,7 @@ import jQuery from 'jquery'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from './Component/sidebar/sidebar';
 import Roles from './page/Roles'
+import Adduser from './page/Adduser';
 
 class App extends Component {
   render() {
@@ -23,7 +24,7 @@ class App extends Component {
           </div>
           <div className="col-md-10">
             <Route path="/roles" exact component={Roles} />
-            <Route path="/roles/admin" exact component={Roles} />
+            <Route path="/roles/adduser" exact component={Adduser} />
             {/* <Route path="/login" exact component={Login} /> */}
             {/* <Route path="/Settings" exact component={Roles} /> */}
           </div>
