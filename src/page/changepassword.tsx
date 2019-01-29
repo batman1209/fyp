@@ -10,7 +10,7 @@ class ChangePass extends React.Component {
                         <div className="col-lg-3"> </div>
                         <div className="col-lg-6" style = {{paddingTop:"60px"}}>
                             <div id="ui">
-                                <h1>SETTINGS</h1>
+                                <h1 style={{marginTop:"20px"}}>Change Password</h1>
                                 <form className="form-group" action="settings.cshtml" method="post" >
                                     <label> Current Password:</label>
                                     <div className="pass">

@@ -29,24 +29,6 @@ class Sidebar extends React.Component {
                                 {/* </a> */}
                             </Link>
                             </li>
-                            <li>
-                                <a className="nav-link" href="">
-                                    <i className="pe-7s-pen"></i>
-                                    <p>Update User</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a className="nav-link" href="#">
-                                    <i className="pe-7s-look"></i>
-                                    <p>View User</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a className="nav-link" href="">
-                                    <i className="pe-7s-delete-user"></i>
-                                    <p>delete user</p>
-                                </a>
-                            </li>
                             <li className="w100">
                             <Link className="nav-link" to ="../../page/Roles">
                                 {/* <a className="nav-link" href=""> */}

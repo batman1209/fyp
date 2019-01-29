@@ -10,25 +10,33 @@ class ChangeName extends React.Component {
                         <div className="col-lg-3"> </div>
                         <div className="col-lg-6" style = {{paddingTop:"60px"}}>
                             <div id="ui">
-                                <h1>SETTINGS</h1>
+                                <h1 style={{marginTop:"20px"}}>Change Name</h1>
                                 <form className="form-group" action="settings.cshtml" method="post" >
+                                  <div className="row">
+                                  <div className="col-lg-12">
                                     <label> Current UserName:</label>
                                     <div className="name">
                                         <input type="text" name="username" className="form-control" id="uname" placeholder="Enter username " />
                                     </div>
+                                    </div>
+
                                     <br />
+                                    <div className="col-lg-12">
                                     <label> New UserName:</label>
                                     <div className="name">
                                         <input type="text" name="username" className="form-control" id="uname1" placeholder="Enter username " />
                                     </div>
+                                    </div>
                                     <br />
-                                    <input type="submit" name="submit" value="DONE" className="btn btn-primary btn-block btn-lg" />
+                                    <div className="col-lg-12" style ={{marginTop:"20px"}}>
+                                    <button type="submit" name="submit" className="btn btn-primary btn-block btn-lg" > Done </button>
+                                    </div>
                                     <br />
                                     <div className="col-lg-12">
                                     <Link className="nav-link" to="../settings">
-                                    
-                                    <button type="button" className="btn btn-primary btn-sm btn-block">  Cancel</button>
+                                    <button type="submit" className="btn btn-primary btn-block btn-lg"> Cancel</button>
                                     </Link>
+                                    </div>
                                     </div>
                                 </form>
                             </div>
