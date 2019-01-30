@@ -1,26 +1,41 @@
 import * as React from 'react';
 //import { ReactComponent } from '*.svg';
 import '../css/form.css';
+import { ChangeEvent } from 'react';
 
-class Adduser extends React.Component {
+class Adduser extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props);
+        this.state = { name: '',email:'' };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange = (event: any) => {
+        // this.setState({field: event.target.value});
+        this.setState({ [event.target.name]: event.target.value })
+        console.log(event.target.value);
+    }
+
+    
+
     render() {
         return (
             <div className="content" >
                 <div className="container-fluid">
                     <div className="row" >
                         <div className="col-lg-3"> </div>
-                        <div className="col-lg-6" style = {{paddingTop:"60px"}}>
+                        <div className="col-lg-6" style={{ paddingTop: "60px" }}>
                             <div id="ui">
-                                <h1 style={{marginTop:"15px"}}>ADD ACCOUNT</h1>
-                                <form className="form-group" action="#" method="post" >
+                                <h1 style={{ marginTop: "15px" }}>ADD ACCOUNT</h1>
+                                <form className="form-group" method="post" >
                                     <label> Name:</label>
                                     <div className="name">
-                                        <input type="text" name="username" className="form-control" id="uname" placeholder="Enter username " />
+                                        <input type="text" onChange={this.handleChange} name="name" className="form-control" placeholder="Enter username " />
                                     </div>
                                     <br />
                                     <label> Email:</label>
                                     <div className="mail">
-                                        <input type="email" name="email" className="form-control" id="mal" placeholder="Enter E-mail" />
+                                        <input type="email" name="email" className="form-control"  placeholder="Enter E-mail" />
                                     </div>
                                     <br />
                                     <div className="row">
@@ -37,17 +52,17 @@ class Adduser extends React.Component {
                                             </div>
                                         </div>
                                         <br />
-                                       
-                                        <div  className="col-lg-12">
-                                        <select className="form-control" id="sel" style = {{marginTop:"35px"}}>
-                                            <option>Choose Gender</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
-                                        </select>
+
+                                        <div className="col-lg-12">
+                                            <select className="form-control" id="sel" style={{ marginTop: "35px" }}>
+                                                <option>Choose Gender</option>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                            </select>
                                         </div>
                                         <br />
-                                        <div  className="col-lg-12">
-                                        <input type="submit" name="submit" value="submit" className="btn btn-primary btn-block btn-lg" style = {{marginTop:"30px"}}/>
+                                        <div className="col-lg-12">
+                                            <input type="submit" name="submit" value="submit" className="btn btn-primary btn-block btn-lg" style={{ marginTop: "30px" }} />
                                         </div>
                                     </div>
                                 </form>

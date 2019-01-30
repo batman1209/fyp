@@ -5,8 +5,11 @@ import './sidebar.css';
 
 
 const logo = require('../../img/login1.jpg');
-class Sidebar extends React.Component {
-
+class Sidebar extends React.Component<any,any> {
+constructor(props:any) {
+    super(props);
+    console.log(this.props.role)
+}
 
     render() {
         return (
@@ -30,7 +33,7 @@ class Sidebar extends React.Component {
                             </Link>
                             </li>
                             <li className="w100">
-                            <Link className="nav-link" to ="../../page/Roles">
+                            <Link className="nav-link" to ="">
                                 {/* <a className="nav-link" href=""> */}
                                     <i className="pe-7s-add-user"> </i>
                                     <p >Team LeaD</p>
@@ -47,7 +50,7 @@ class Sidebar extends React.Component {
                             </Link>
                             </li>
                             <li>
-                            <Link className="nav-link" to="">
+                            <Link className="nav-link" to="login">
                                 {/* <a className="nav-link " href=""> */}
                                     <i className="pe-7s-power"></i>
                                     <p>logout</p>
