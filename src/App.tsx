@@ -4,11 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './css/light-bootstrap-dashboard.css';
 import './css/animate.min.css';
 import './css/pe-icon-7-stroke.css';
-//import 'bootstrap/dist/css/bootstrap-theme.css';
 import 'bootstrap';
 import 'font-awesome/css/font-awesome.css'
-import jQuery from 'jquery'
-//import Popper from 'popper.js';
+//import jQuery from 'jquery'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from './Component/sidebar/sidebar';
 import Roles from './page/Roles'
@@ -18,6 +16,7 @@ import ChangeName from './page/changename';
 import ChangeMail from './page/changemail';
 import ChangePass from './page/changepassword';
 import Login from './page/Login';
+
 
 class App extends Component {
   render() {
