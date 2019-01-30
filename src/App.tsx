@@ -30,11 +30,9 @@ class App extends Component {
           <div className="col-md-10">
             <Route path="/roles" exact component={Roles} />
             <Route path="/roles/adduser" exact component={Adduser} />
-            {/* <Route path="/login" exact component={Login} /> */}
             <Route path="/settings" exact component={Settings} /> 
             <Route path="/settings/changename" exact component={ChangeName} />
-            <Route path="/settings/changemail" exact component={ChangeMail} /> 
-            {/* <Route path="/settings/changename" exact component={ChangeName} />  */}
+            <Route path="/settings/changemail" exact component={ChangeMail} />
             <Route path="/settings/changepass" exact component={ChangePass} /> 
             <Route path="/login" exact component={Login} />
           </div>
