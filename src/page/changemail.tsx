@@ -1,7 +1,25 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-class ChangeMail extends React.Component {
+class ChangeMail extends React.Component<any, any> {
+    constructor(props: any) {
+        super(props);
+        this.state = { 
+            email:'',
+            email1:'' };
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange = (event: any) => {
+        // this.setState({field: event.target.value});
+        this.setState({ [event.target.name]: event.target.value })
+        console.log({[event.target.name]:event.target.value});
+    }
+
+    handleSubmit(event:any) {
+        alert('Your changes are saved');
+        event.preventDefault();
+      }
     render() {
         return (
             <div className="content" >
@@ -11,18 +29,18 @@ class ChangeMail extends React.Component {
                         <div className="col-lg-6" style = {{paddingTop:"60px"}}>
                             <div id="ui">
                                 <h1>SETTINGS</h1>
-                                <form className="form-group" action="settings.cshtml" method="post" >
+                                <form className="form-group" action="settings.cshtml" method="post" onSubmit={this.handleSubmit} >
                                     <label> Current Email:</label>
                                     <div className="name">
-                                        <input type="text" name="username" className="form-control" id="uname" placeholder="Enter username " />
+                                        <input type="text" name="email" onChange={this.handleChange} className="form-control" id="uname" placeholder="Enter username " />
                                     </div>
                                     <br />
                                     <label> New Email:</label>
                                     <div className="name">
-                                        <input type="text" name="username" className="form-control" id="uname1" placeholder="Enter username " />
+                                        <input type="text" name="email1" onChange={this.handleChange} className="form-control" id="uname1" placeholder="Enter username " />
                                     </div>
                                     <br />
-                                    <input type="submit" name="submit" value="DONE" className="btn btn-primary btn-block btn-lg" />
+                                    <input type="submit" name="submit" value="DONE" onChange={this.handleChange} className="btn btn-primary btn-block btn-lg" />
                                     <br />
                                     <div className="col-lg-12">
                                     <Link className="nav-link" to="../settings">
