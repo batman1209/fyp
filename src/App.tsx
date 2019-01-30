@@ -4,23 +4,17 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './css/light-bootstrap-dashboard.css';
 import './css/animate.min.css';
 import './css/pe-icon-7-stroke.css';
-//import 'bootstrap/dist/css/bootstrap-theme.css';
 import 'bootstrap';
 import 'font-awesome/css/font-awesome.css'
-import jQuery from 'jquery'
-//import Popper from 'popper.js';
+//import jQuery from 'jquery'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from './Component/sidebar/sidebar';
 import Roles from './page/Roles'
 import Adduser from './page/Adduser';
 import Settings from './page/settings';
 import ChangeName from './page/changename';
-<<<<<<< HEAD
 import ChangeMail from './page/changemail';
-=======
 import ChangePass from './page/changepassword';
->>>>>>> 6f7a00fbf0d85592b59d1b0270123a22f2dce353
-
 class App extends Component {
   render() {
     return (
@@ -34,13 +28,11 @@ class App extends Component {
             <Route path="/roles/adduser" exact component={Adduser} />
             {/* <Route path="/login" exact component={Login} /> */}
             <Route path="/settings" exact component={Settings} /> 
-<<<<<<< HEAD
-            <Route path="/settings/changename" exact component={ChangeName} />
+            
             <Route path="/settings/changemail" exact component={ChangeMail} /> 
-=======
             <Route path="/settings/changename" exact component={ChangeName} /> 
             <Route path="/settings/changepass" exact component={ChangePass} /> 
->>>>>>> 6f7a00fbf0d85592b59d1b0270123a22f2dce353
+
           </div>
 
         </div>
