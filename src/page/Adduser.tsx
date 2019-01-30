@@ -6,15 +6,25 @@ import { ChangeEvent } from 'react';
 class Adduser extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
-        this.state = { name: '',email:'' };
+        this.state = { 
+            name: '',
+            email:'',
+            pass: '',
+            pass1:'',
+            gender:'' };
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange = (event: any) => {
         // this.setState({field: event.target.value});
         this.setState({ [event.target.name]: event.target.value })
-        console.log(event.target.value);
+        console.log({[event.target.name]:event.target.value});
     }
+
+    handleSubmit(event:any) {
+        alert('Account has been created');
+        event.preventDefault();
+      }
 
     
 
@@ -27,7 +37,7 @@ class Adduser extends React.Component<any, any> {
                         <div className="col-lg-6" style={{ paddingTop: "60px" }}>
                             <div id="ui">
                                 <h1 style={{ marginTop: "15px" }}>ADD ACCOUNT</h1>
-                                <form className="form-group" method="post" >
+                                <form className="form-group" method="post" onSubmit={this.handleSubmit}>
                                     <label> Name:</label>
                                     <div className="name">
                                         <input type="text" onChange={this.handleChange} name="name" className="form-control" placeholder="Enter username " />
@@ -35,26 +45,26 @@ class Adduser extends React.Component<any, any> {
                                     <br />
                                     <label> Email:</label>
                                     <div className="mail">
-                                        <input type="email" name="email" className="form-control"  placeholder="Enter E-mail" />
+                                        <input type="email" name="email" onChange={this.handleChange} className="form-control"  placeholder="Enter E-mail" />
                                     </div>
                                     <br />
                                     <div className="row">
                                         <div className="col-lg-6">
                                             <label> Password:</label>
                                             <div className="pass">
-                                                <input type="password" name="pass" className="form-control" id="pwd" placeholder="Enter password" />
+                                                <input type="password" name="pass" onChange={this.handleChange} className="form-control" id="pwd" placeholder="Enter password" />
                                             </div>
                                         </div>
                                         <div className="col-lg-6">
                                             <label> Re-type Password:</label>
                                             <div className="pass1">
-                                                <input type="password" name="pass1" className="form-control" id="pwd1" placeholder="Re-type password" />
+                                                <input type="password" name="pass1" onChange={this.handleChange} className="form-control" id="pwd1" placeholder="Re-type password" />
                                             </div>
                                         </div>
                                         <br />
 
                                         <div className="col-lg-12">
-                                            <select className="form-control" id="sel" style={{ marginTop: "35px" }}>
+                                            <select className="form-control" name="gender" onChange={this.handleChange} id="sel" style={{ marginTop: "35px" }}>
                                                 <option>Choose Gender</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
