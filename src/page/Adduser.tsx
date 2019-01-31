@@ -3,28 +3,49 @@ import * as React from 'react';
 import '../css/form.css';
 import { ChangeEvent } from 'react';
 
+const axios = require('axios');
+
 class Adduser extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = { 
+            teacherId: 12,
             name: '',
             email:'',
-            pass: '',
+            password: '',
             pass1:'',
-            gender:'' };
+            gender:'' ,
+            question: []
+        };
         this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange = (event: any) => {
-        // this.setState({field: event.target.value});
         this.setState({ [event.target.name]: event.target.value })
-        console.log({[event.target.name]:event.target.value});
+    }
+
+    componentDidMount() {
+        axios.get('https://localhost:44310/api/ ', this.state)
+        .then(function (response:any) {
+          console.log(response);
+        })
+        .catch(function (error:any) {
+          console.log(error);
+        });
+     console.log(this.state);
     }
 
     handleSubmit(event:any) {
-       
-        alert('Account has been created');
         event.preventDefault();
+        axios.post('https://localhost:44310/api/Admin ', this.state)
+          .then(function (response:any) {
+            console.log(response);
+          })
+          .catch(function (error:any) {
+            console.log(error);
+          });
+       console.log(this.state);
       }
 
     
@@ -53,7 +74,7 @@ class Adduser extends React.Component<any, any> {
                                         <div className="col-lg-6">
                                             <label> Password:</label>
                                             <div className="pass">
-                                                <input type="password" name="pass" onChange={this.handleChange} className="form-control" id="pwd" placeholder="Enter password" required/>
+                                                <input type="password" name="password" onChange={this.handleChange} className="form-control" id="pwd" placeholder="Enter password" required/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6">

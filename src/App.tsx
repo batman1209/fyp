@@ -16,6 +16,8 @@ import ChangeName from './page/changename';
 import ChangeMail from './page/changemail';
 import ChangePass from './page/changepassword';
 import Login from './page/Login';
+import Home from './page/home';
+
 
 
 class App extends Component {
@@ -26,13 +28,15 @@ class App extends Component {
           <div className="col-md-2">
             <Sidebar role="admin" />
           </div>
+         
           <div className="col-md-10">
+          <Route path="/" exact component={Home} />
             <Route path="/roles" exact component={Roles} />
             <Route path="/roles/adduser" exact component={Adduser} />
-            <Route path="/settings" exact component={Settings} /> 
+            <Route path="/settings" exact component={Settings} />
             <Route path="/settings/changename" exact component={ChangeName} />
             <Route path="/settings/changemail" exact component={ChangeMail} />
-            <Route path="/settings/changepass" exact component={ChangePass} /> 
+            <Route path="/settings/changepass" exact component={ChangePass} />
             <Route path="/login" exact component={Login} />
           </div>
 
