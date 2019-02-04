@@ -17,6 +17,7 @@ import ChangeMail from './page/changemail';
 import ChangePass from './page/changepassword';
 import Login from './page/Login';
 import Home from './page/home';
+import UpdateUser from './page/updateuser';
 
 
 
@@ -30,7 +31,7 @@ class App extends Component {
           </div>
          
           <div className="col-md-10">
-          <Route path="/" exact component={Home} />
+            <Route path="/" exact component={Home} />
             <Route path="/roles" exact component={Roles} />
             <Route path="/roles/adduser" exact component={Adduser} />
             <Route path="/settings" exact component={Settings} />
@@ -38,6 +39,7 @@ class App extends Component {
             <Route path="/settings/changemail" exact component={ChangeMail} />
             <Route path="/settings/changepass" exact component={ChangePass} />
             <Route path="/login" exact component={Login} />
+            <Route path="/updateuser"  exact component={UpdateUser} />
           </div>
 
         </div>
