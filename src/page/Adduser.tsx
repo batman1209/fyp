@@ -9,7 +9,6 @@ class Adduser extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = { 
-            teacherId: 12,
             name: '',
             email:'',
             password: '',
@@ -24,18 +23,6 @@ class Adduser extends React.Component<any, any> {
     handleChange = (event: any) => {
         this.setState({ [event.target.name]: event.target.value })
     }
-
-    componentDidMount() {
-        axios.get('https://localhost:44310/api/ ', this.state)
-        .then(function (response:any) {
-          console.log(response);
-        })
-        .catch(function (error:any) {
-          console.log(error);
-        });
-     console.log(this.state);
-    }
-
     handleSubmit(event:any) {
         event.preventDefault();
         axios.post('https://localhost:44310/api/Admin ', this.state)

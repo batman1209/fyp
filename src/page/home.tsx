@@ -1,6 +1,29 @@
 import * as React from 'react';
+import {any} from 'prop-types';
+import '../css/form.css';
 
-class Home extends React.Component {
+import {Link} from 'react-router-dom';
+
+const axios=require('axios');
+class Home extends React.Component<any, any> {
+    constructor(props: any){
+        super(props);
+        this.state={
+            teacher:[]
+        }
+    }
+
+    componentDidMount() {
+        axios.get('https://localhost:44310/api/ ', this.state)
+        .then(function (response:any) {
+          console.log(response);
+        })
+        .catch(function (error:any) {
+          console.log(error);
+        });
+     console.log(this.state);
+    }
+
     render() {
         return (
             <div className="content" style={{paddingTop:"70px", paddingLeft:"40px"}}>
@@ -9,17 +32,30 @@ class Home extends React.Component {
                         <table className="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th>
+                                    <th>Name</th>
                                     <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Gender</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Maryum</td>
-                                    <td>Siddique</td>
-                                    <td>maryum@gmail.com</td>
-                                </tr>
+                               
+                               {this.state.teacher.map((obj:any) => <tr>
+                                   <td>{obj.name}</td>
+                                   <td>{obj.email}</td>
+                                   <td>{obj.password}</td>
+                                   <td>{obj.gender}</td>
+                                   <td>
+                                       <Link className="nav-link" to="updateuser">
+                                            <button type="button" className ="semi-transparent-button">Edit</button> 
+                                       </Link>
+                                   </td>
+                                   <td>
+                                   <Link className="nav-link" to="updateuser">
+                                            <button type="button" className ="semi-transparent-button" style={{marginLeft:"0px"}}>Delete</button> 
+                                       </Link>
+                                   </td>
+                                   </tr>)}
                             </tbody>
                         </table>
                     </div>
