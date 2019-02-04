@@ -39,7 +39,7 @@ class App extends Component {
             <Route path="/settings/changemail" exact component={ChangeMail} />
             <Route path="/settings/changepass" exact component={ChangePass} />
             <Route path="/login" exact component={Login} />
-            <Route path="/updateuser"  exact component={UpdateUser} />
+            <Route path="/editUser/:id"  exact component={Adduser} />
           </div>
 
         </div>

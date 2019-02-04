@@ -8,6 +8,7 @@ const axios = require('axios');
 class Adduser extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
+        
         this.state = { 
             name: '',
             email:'',
@@ -34,6 +35,7 @@ class Adduser extends React.Component<any, any> {
           })
           .catch(function (error:any) {
             console.log(error);
+            alert('Sorry! Your request can not be processed at the moment')
           });
        console.log(this.state);
       }
