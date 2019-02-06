@@ -18,7 +18,6 @@ class Home extends React.Component<any, any> {
     componentDidMount() {
         axios.get('https://localhost:44310/api/Admin', this.state)
             .then((response: any) => {
-                console.log(response);
                 var teacher = response.data
                 this.setState({ teacher });
             })
@@ -29,12 +28,11 @@ class Home extends React.Component<any, any> {
     delete(id: Number) {
         var r = confirm("Are you sure tou wanna delete this record?");
         if (r == true) {
-            axios.delete(`https://localhost:44310/api/Teachers/${id}`)
+            axios.delete(`https://localhost:44310/api/Admin/${id}`)
                 .then((res: any) => {
                     alert('Deleted');
                     axios.get('https://localhost:44310/api/Admin', this.state)
                         .then((response: any) => {
-                            console.log(response);
                             var teacher = response.data
                             this.setState({ teacher });
                         })
@@ -67,21 +65,18 @@ class Home extends React.Component<any, any> {
                             <tbody>
 
 
-                                {this.state.teacher.map((obj: any) => <tr>
+                                {this.state.teacher.map((obj: any,index:any) => <tr key={'mykey' + index}>
                                     <td>{obj.teacherId}</td>
                                     <td>{obj.name}</td>
                                     <td>{obj.email}</td>
                                     <td>{obj.password}</td>
                                     <td>{obj.gender}</td>
                                     <td>
-                                        <Link className="nav-link" to="editUser/{}">
+                                        <Link className="button" to={`updateuser/` + obj.teacherId}>
                                             <button type="button" className="semi-transparent-button">Edit</button>
                                         </Link>
                                     </td>
                                     <td>
-                                        {/* <Link className="nav-link" to="deleteuser">
-                                            
-                                        </Link> */}
                                         <button type="button" className="semi-transparent-button" onClick={() => this.delete(obj.teacherId)} style={{ marginLeft: "0px" }}>Delete</button>
                                     </td>
                                 </tr>)}

@@ -32,14 +32,13 @@ class App extends Component {
           <div className="col-md-10">
             <Route path="/" exact component={Home} />
             <Route path="/roles" exact component={Roles} />
-            {/* //<Route path="/roles/adduser" exact component={Adduser} /> */}
+            <Route path="/roles/adduser" exact component={Adduser} />
             <Route path="/settings" exact component={Settings} />
             <Route path="/settings/changename" exact component={ChangeName} />
             <Route path="/settings/changemail" exact component={ChangeMail} />
             <Route path="/settings/changepass" exact component={ChangePass} />
             <Route path="/login" exact component={Login} />
-            <Route path="/editUser/:id"  exact component={Adduser} />
-            <Route path="updateuser" exact component={UpdateUser}/>
+            <Route path="/updateuser/:id?" exact component={Adduser}/>
           </div>
 
         </div>

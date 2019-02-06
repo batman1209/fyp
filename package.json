@@ -40,6 +40,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/react-bootstrap": "^0.32.16",
     "@types/requirejs": "^2.1.31"
   }
 }
