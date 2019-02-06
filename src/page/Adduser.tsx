@@ -2,6 +2,7 @@ import * as React from 'react';
 //import { ReactComponent } from '*.svg';
 import '../css/form.css';
 import { ChangeEvent } from 'react';
+import {Link} from 'react-router-dom';
 
 const axios = require('axios');
 
@@ -29,7 +30,7 @@ class Adduser extends React.Component<any, any> {
 
     handleSubmit(event:any) {
         event.preventDefault();
-        axios.post('https://localhost:44310/api/Admin ', this.state)
+        axios.post('https://localhost:44310/api/Admin/ ', this.state)
           .then(function (response:any) {
             console.log(response);
           })
@@ -86,7 +87,9 @@ class Adduser extends React.Component<any, any> {
                                         </div>
                                         <br />
                                         <div className="col-lg-12">
+                                        <Link className="nav-link" to="/">
                                             <input type="submit" name="submit" value="submit" className="btn btn-primary btn-block btn-lg" style={{ marginTop: "30px" }} />
+                                        </Link>
                                         </div>
                                     </div>
                                 </form>
