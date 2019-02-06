@@ -17,7 +17,7 @@ import ChangeMail from './page/changemail';
 import ChangePass from './page/changepassword';
 import Login from './page/Login';
 import Home from './page/home';
-import UpdateUser from './page/updateuser';
+
 
 
 class App extends Component {
