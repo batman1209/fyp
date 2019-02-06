@@ -74,7 +74,7 @@ class Home extends React.Component<any, any> {
                                     <td>{obj.password}</td>
                                     <td>{obj.gender}</td>
                                     <td>
-                                        <Link className="nav-link" to="updateuser">
+                                        <Link className="nav-link" to="editUser/{}">
                                             <button type="button" className="semi-transparent-button">Edit</button>
                                         </Link>
                                     </td>

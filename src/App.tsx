@@ -10,7 +10,7 @@ import 'font-awesome/css/font-awesome.css'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from './Component/sidebar/sidebar';
 import Roles from './page/Roles'
-//import Adduser from './page/Adduser';
+import Adduser from './page/Adduser';
 import Settings from './page/settings';
 import ChangeName from './page/changename';
 import ChangeMail from './page/changemail';
@@ -38,8 +38,8 @@ class App extends Component {
             <Route path="/settings/changemail" exact component={ChangeMail} />
             <Route path="/settings/changepass" exact component={ChangePass} />
             <Route path="/login" exact component={Login} />
-            <Route path="/updateuser"  exact component={UpdateUser} />
-       
+            <Route path="/editUser/:id"  exact component={Adduser} />
+            <Route path="updateuser" exact component={UpdateUser}/>
           </div>
 
         </div>
