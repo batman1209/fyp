@@ -2,6 +2,7 @@ import * as React from 'react';
 import { any } from 'prop-types';
 import '../css/button.css';
 import { Link } from 'react-router-dom';
+import fakeAuth from '../Component/private-route/fake-auth';
 
 const axios = require('axios');
 // import SweetAlert from 'sweetalert-react';
@@ -12,6 +13,7 @@ class Home extends React.Component<any, any> {
         this.state = {
             teacher: []
         }
+        console.log(fakeAuth.isAuthenticated)
         // this.delete = this.delete.bind(this);
     }
 
@@ -35,6 +37,7 @@ class Home extends React.Component<any, any> {
                         .then((response: any) => {
                             var teacher = response.data
                             this.setState({ teacher });
+                            
                         })
                         .catch((error: any) => {
                             console.log(error);

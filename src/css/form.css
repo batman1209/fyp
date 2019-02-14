@@ -98,8 +98,13 @@ h1{
 }
 .btn:hover, .btn:focus{
 	background-color:#25a890 !important;
-	border-bottom:4px solid #25a890 !important;
+	border:0 !important;
 	
 }
+
+.form-control:focus {
+	border: 0;
+}
+
 
   

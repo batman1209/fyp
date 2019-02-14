@@ -1,8 +1,6 @@
 import * as React from 'react';
 //import { ReactComponent } from '*.svg';
 import '../css/form.css';
-import { ChangeEvent } from 'react';
-import { Link,withRouter  } from 'react-router-dom';
 
 const axios = require('axios');
 
@@ -11,16 +9,23 @@ class Adduser extends React.Component<any, any> {
         super(props);
 
         this.state = {
-            teacherId: '',
+            teacherId: 0,
             name: '',
             email: '',
             password: '',
-            pass1: '',
+            confirmPassword: '',
             gender: '',
-            question: []
+            question: [],
+            nameError: '',
+            passError: '',
+            emailError: ''
+
         };
+      
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+       
     }
     componentWillMount() {
         if (this.props.match.params.id != undefined) {
@@ -31,7 +36,7 @@ class Adduser extends React.Component<any, any> {
                         name: response.data.name,
                         email: response.data.email,
                         password: response.data.password,
-                        pass1: response.data.pass1,
+                        confirmPassword: response.data.confirmPassword,
                         gender: response.data.gender,
                         question: []
                     });
@@ -43,30 +48,89 @@ class Adduser extends React.Component<any, any> {
     }
 
     handleChange = (event: any) => {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({ [event.target.name]: event.target.value }, () => this.validateName())
+    }
+   
+    handlePasswordChange = (event: any) => {
+        this.setState({ [event.target.name]: event.target.value }, () => this.validatePassword())
+       
     }
 
 
 
+    validateName() {
+        const { name } = this.state;
+        this.setState(
+            { nameError: name.length > 3 ? null : 'Name must contain atleast 3 characters' }
+            //    passError: password.length > 3 || password  ? null : 'Password must contain atleast 6 characters'}
+        )
+    }
+
+    validatePassword() {
+        const { password } = this.state;
+        this.setState({
+            passError: password.length > 6 ? null : 'Password must contain atleast 6 characters'
+        }
+        )
+    }
+
+    validateEmail(email: any) {
+        const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/;
+        const result = pattern.test(email);
+        if (result === true) {
+            this.setState({
+                emailError: false,
+                email: email
+            })
+        } else {
+            this.setState({
+                emailError: true
+            })
+        }
+        // email = $('email');
+        // var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        // if (filter.test(email.value)) {
+        //   // Yay! valid
+        //  return '';
+        // }
+        // else
+        //   return 'invalid email';
+    }
     handleSubmit(event: any) {
         event.preventDefault();
         if (this.props.match.params.id != undefined) {
-            axios.put(`https://localhost:44310/api/Admin/${this.props.match.params.id}`,this.state)
-                .then((response: any) => {
-                    this.props.history.push('/');
-                })
-                .catch(function (error: any) {
-                    console.log(error);
-                });
+            const { password, confirmPassword } = this.state
+            if (password !== confirmPassword) {
+                alert('passwords do not match')
+            }
+            else {
+                axios.put(`https://localhost:44310/api/Admin/${this.props.match.params.id}`, this.state)
+                    .then((response: any) => {
+                        this.props.history.push('/');
+                    })
+                    .catch(function (error: any) {
+                        console.log(error);
+                    });
+            }
         } else {
-            axios.post('https://localhost:44310/api/Admin', this.state)
-                .then(function (response: any) {
-                    alert('User has been added successfully')
-                })
-                .catch(function (error: any) {
-                    console.log(error);
-                    alert('Sorry! Your request can not be processed at the moment')
-                });
+            const { password, confirmPassword, name } = this.state
+            if (password !== confirmPassword) {
+                alert('passwords do not match')
+
+            }
+            else {
+                axios.post('https://localhost:44310/api/Admin/', this.state)
+                    .then((response: any) => {
+                        console.log(response);
+                        alert('User has been added successfully')
+                    })
+                    .catch(function (error: any) {
+                        console.log(error);
+                        alert('Sorry! Your request can not be processed at the moment')
+                    });
+            }
+
+
         }
 
     }
@@ -84,25 +148,34 @@ class Adduser extends React.Component<any, any> {
                                 <form className="form-group" method="post" onSubmit={this.handleSubmit} autoComplete="off">
                                     <label> Name:</label>
                                     <div className="name">
-                                        <input type="text" onChange={this.handleChange} name="name" value={this.state.name} className="form-control" placeholder="Enter username " required />
+                                        <input type="text"
+                                            onChange={this.handleChange}
+                                            name="name"
+                                            value={this.state.name}
+                                            className={`form-control ${this.state.nameError ? 'is-invalid' : ''}`}
+                                            placeholder="Enter username " required
+                                            onBlur={this.validateName.bind(this)} />
+                                        <div className="invalid-feedback">Name must be longer than 3 characters</div>
                                     </div>
                                     <br />
                                     <label> Email:</label>
                                     <div className="mail">
                                         <input type="email" name="email" value={this.state.email} onChange={this.handleChange} className="form-control" placeholder="Enter E-mail" required />
+                                        <div className="invalid-feedback">Email is invalid</div>
                                     </div>
                                     <br />
                                     <div className="row">
                                         <div className="col-lg-6">
                                             <label> Password:</label>
                                             <div className="pass">
-                                                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} className="form-control" id="pwd" placeholder="Enter password" required />
+                                                <input type="password" name="password" value={this.state.password} onChange={this.handlePasswordChange} className={`form-control ${this.state.passError ? 'is-invalid' : ''}`} id="pwd" placeholder="Enter password" required onBlur={this.validatePassword.bind(this)} />
+                                                <div className="invalid-feedback">Password must be longer than 6 characters</div>
                                             </div>
                                         </div>
                                         <div className="col-lg-6">
                                             <label> Re-type Password:</label>
                                             <div className="pass1">
-                                                <input type="password" name="pass1" value={this.state.pass1} onChange={this.handleChange} className="form-control" id="pwd1" placeholder="Re-type password" required />
+                                                <input type="password" name="confirmPassword" value={this.state.pass1} onChange={this.handleChange} className="form-control" id="pwd1" placeholder="Re-type password" required />
                                             </div>
                                         </div>
                                         <br />
@@ -117,7 +190,7 @@ class Adduser extends React.Component<any, any> {
                                         <br />
                                         <div className="col-lg-12">
                                             {/* <Link className="nav-link" to="/"> */}
-                                            <input type="submit" name="submit" value="submit" className="btn btn-primary btn-block btn-lg" style={{ marginTop: "30px" }} />
+                                            <input type="submit" name="submit" value="submit" className="btn btn-primary btn-block btn-lg" style={{ marginTop: "20px" }} />
                                             {/* </Link> */}
                                         </div>
                                     </div>

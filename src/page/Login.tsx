@@ -1,8 +1,19 @@
 import * as React from 'react';
-// import logo from '../img/PUCIT-Logo';
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    withRouter
+} from "react-router-dom";
+import fakeAuth from '../Component/private-route/fake-auth';
+//import {withRouter} from 'react-router';
+
 
 const logo = require('../img/PUCIT-Logo.png');
-class Login extends React.Component {
+
+
+
+class Login extends React.Component<any, any> {
     render() {
         return (
             <div className="modal-dialog text-center">
@@ -10,7 +21,7 @@ class Login extends React.Component {
                     <div className="modal-content">
                         <div className="col-12  user-img">
                             <img src={logo} />
-                            <form className="col-12" action="#" method="post">
+                            <form className="col-12">
 
                                 <div className="form-group">
                                     <input type="text" className="form-control" id="uname" placeholder="Enter Username" />
@@ -20,10 +31,7 @@ class Login extends React.Component {
                                     <input type="password" className="form-control" id="pwd" placeholder="Enter Password" />
 
                                 </div>
-
-
-
-                                <button type="submit" className="btn"><i className="fas fa-sign-in-alt"></i>Login</button>
+                                <button type="button" className="btn" onClick={() => { fakeAuth.authenticate('tet'); this.props.history.push('/'); }}><i className="fas fa-sign-in-alt"></i>Login</button>
                             </form>
                             <div className="col-12 forgot">
                                 <a href="#">Forgot Password?</a>
