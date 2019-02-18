@@ -52,7 +52,7 @@ class Home extends React.Component<any, any> {
 
     render() {
         return (
-            <div className="content" style={{ paddingTop: "70px", paddingLeft: "40px" }}>
+             <div className="content" style={{ paddingTop: "70px", paddingLeft: "40px" }}>
                 <div className="container-fluid">
                     <div className="row" >
                         <table className="table ">
@@ -89,6 +89,7 @@ class Home extends React.Component<any, any> {
                     </div>
                 </div>
             </div>
+          
         )
     }
 }

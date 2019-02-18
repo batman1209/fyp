@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import "../Component/sidebar/sidebar";
-import Sidebar from '../Component/sidebar/sidebar';
+
 
 class Roles extends React.Component {
 

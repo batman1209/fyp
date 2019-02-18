@@ -31,7 +31,7 @@ class Login extends React.Component<any, any> {
                                     <input type="password" className="form-control" id="pwd" placeholder="Enter Password" />
 
                                 </div>
-                                <button type="button" className="btn" onClick={() => { fakeAuth.authenticate('tet'); this.props.history.push('/'); }}><i className="fas fa-sign-in-alt"></i>Login</button>
+                                <button type="button" className="btn" onClick={() => { fakeAuth.authenticate('test'); this.props.history.push('/Page'); }}><i className="fas fa-sign-in-alt"></i>Login</button>
                             </form>
                             <div className="col-12 forgot">
                                 <a href="#">Forgot Password?</a>

@@ -19,6 +19,8 @@ import Login from './page/Login';
 import Home from './page/home';
 import PrivateRoute from './Component/private-route/PrivateRoute';
 import fakeAuth from './Component/private-route/fake-auth';
+import Page from './page/page';
+import Left from './page/page';
 
 class App extends Component<any, any> {
   constructor(props: any) {
@@ -30,21 +32,22 @@ class App extends Component<any, any> {
       <Router>
         {/* <AuthButton /> */}
         <div className="row">
-          {fakeAuth.isAuthenticated ? <div className="col-md-2">
-            <Sidebar role="admin" />
-          </div> : 'test'}
+          {/* {fakeAuth.isAuthenticated ? <div className="col-md-2">
+           
+          </div> :''} */}
           <div className="col-md-10">
             {/* <Route path="/" exact component={Home} /> */}
-            <PrivateRoute path="/" exact component={Home} />
-            <Route path="/roles" exact component={Roles} />
+            <PrivateRoute path="/Page" exact component={Left} />
+            {/* <Route path="/Page" exact component={Page} /> */}
+           {/* <Route path="/roles" exact component={Roles}/>
             <Route path="/roles/adduser" exact component={Adduser} />
             <Route path="/roles/roles/" exact component={Home} />
             <Route path="/settings" exact component={Settings} />
             <Route path="/settings/changename" exact component={ChangeName} />
             <Route path="/settings/changemail" exact component={ChangeMail} />
-            <Route path="/settings/changepass" exact component={ChangePass} />
+            <Route path="/settings/changepass" exact component={ChangePass} /> */}
             <Route path="/login" exact component={Login} />
-            <Route path="/updateuser/:id?" exact component={Adduser} />
+            {/* <Route path="/updateuser/:id?" exact component={Adduser} />  */}
           </div>
 
         </div>
