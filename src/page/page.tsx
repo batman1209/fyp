@@ -11,6 +11,7 @@ import Settings from './settings';
 import PrivateRoute from '../Component/private-route/PrivateRoute';
 import Sidebar from '../Component/sidebar/sidebar';
 import Try from '../Component/sidebar/sidebar';
+import Layout from './Layout';
 
   function Left(props : any) {
     return(
@@ -28,14 +29,10 @@ import Try from '../Component/sidebar/sidebar';
     render(){
         return(
 
-<div>
-    <Router>
-        <Try />
-        <Route path="/Page/" exact component={Home}/>
-    </Router>
+       <Layout left={<Sidebar/>} center={<Home/>} />
     
    
-</div>
+
 
         )
     }
