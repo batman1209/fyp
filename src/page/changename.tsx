@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
+import Sidebar from '../Component/sidebar/sidebar';
 
 class ChangeName extends React.Component<any, any> {
     constructor(props: any) {
@@ -22,7 +23,12 @@ class ChangeName extends React.Component<any, any> {
       }
     render() {
         return (
-            <div className="content" >
+            <div className="row">
+             <div className="content col-lg-2">
+                 <Sidebar />
+                </div>
+                <div className="col-lg-10">
+            <div className="content" style={{backgroundColor:"rgba(255, 255, 255, 0.96)"}}>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-lg-3"> </div>
@@ -62,6 +68,8 @@ class ChangeName extends React.Component<any, any> {
                         <br />
                     </div>
                     <div className="col-lg-3"></div>
+                </div>
+                </div>
                 </div>
             </div>
         )
