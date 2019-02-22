@@ -12,17 +12,17 @@ class Home extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            teacher: []
+            user: []
         }
-        console.log(fakeAuth.isAuthenticated)
+        // console.log(fakeAuth.isAuthenticated)
         // this.delete = this.delete.bind(this);
     }
 
     componentDidMount() {
-        axios.get('https://localhost:44310/api/Admin', this.state)
+        axios.get('https://localhost:44310/api/Users', this.state)
             .then((response: any) => {
-                var teacher = response.data
-                this.setState({ teacher });
+                var user = response.data
+                this.setState({ user });
             })
             .catch((error: any) => {
                 console.log(error);
@@ -31,13 +31,13 @@ class Home extends React.Component<any, any> {
     delete(id: Number) {
         var r = confirm("Are you sure tou wanna delete this record?");
         if (r == true) {
-            axios.delete(`https://localhost:44310/api/Admin/${id}`)
+            axios.delete(`https://localhost:44310/api/Users/${id}`)
                 .then((res: any) => {
                     alert('Deleted');
-                    axios.get('https://localhost:44310/api/Admin', this.state)
+                    axios.get('https://localhost:44310/api/Users', this.state)
                         .then((response: any) => {
-                            var teacher = response.data
-                            this.setState({ teacher });
+                            var user = response.data
+                            this.setState({ user });
 
                         })
                         .catch((error: any) => {
@@ -67,25 +67,27 @@ class Home extends React.Component<any, any> {
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Password</th>
-                                        <th>gender</th>
+                                         <th>gender</th>
+                                        <th>Role</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
 
-                                    {this.state.teacher.map((obj: any, index: any) => <tr key={'mykey' + index}>
-                                        <td>{obj.teacherId}</td>
+                                    {this.state.user.map((obj: any, index: any) => <tr key={'mykey' + index}>
+                                        <td>{obj.userId}</td>
                                         <td>{obj.name}</td>
                                         <td>{obj.email}</td>
                                         <td>{obj.password}</td>
                                         <td>{obj.gender}</td>
+                                        <td>{obj.roleId}</td>
                                         <td>
-                                            <Link className="button" to={`Adduser/` + obj.teacherId}>
+                                            <Link className="button" to={`Adduser/` + obj.userId}>
                                                 <button type="button" className="semi-transparent-button">Edit</button>
                                             </Link>
                                         </td>
                                         <td>
-                                            <button type="button" className="semi-transparent-button" onClick={() => this.delete(obj.teacherId)} style={{ marginLeft: "0px" }}>Delete</button>
+                                            <button type="button" className="semi-transparent-button" onClick={() => this.delete(obj.userId)} style={{ marginLeft: "0px" }}>Delete</button>
                                         </td>
                                     </tr>)}
 

@@ -8,12 +8,23 @@ import {
 import fakeAuth from '../Component/private-route/fake-auth';
 //import {withRouter} from 'react-router';
 
-
+const axios = require('axios');
 const logo = require('../img/PUCIT-Logo.png');
-
-
-
 class Login extends React.Component<any, any> {
+    constructor(props: any){
+        super(props);
+        this.state = {
+          name: '',
+          password: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+    }
+   handleChange = (event : any) => {
+       this.setState({ [event.target.name] : event.target.value })
+   }
+  
+    
+  
     render() {
         return (
             <div className="modal-dialog text-center">
@@ -24,14 +35,13 @@ class Login extends React.Component<any, any> {
                             <form className="col-12">
 
                                 <div className="form-group">
-                                    <input type="text" className="form-control" id="uname" placeholder="Enter Username" />
+                                    <input type="text" className="form-control" name="name" value={this.state.name} onChange={this.handleChange} placeholder="Enter Username" />
 
                                 </div>
                                 <div className="form-group">
-                                    <input type="password" className="form-control" id="pwd" placeholder="Enter Password" />
-
+                                    <input type="password" className="form-control"  name="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter Password" />
                                 </div>
-                                <button type="button" className="btn" onClick={() => { fakeAuth.authenticate('test'); this.props.history.push('/'); }}><i className="fas fa-sign-in-alt"></i>Login</button>
+                                <button type="button" className="btn" onClick={() => { fakeAuth.authenticate(this.state) ; this.props.history.push('/'); }}><i className="fas fa-sign-in-alt"></i>Login</button>
                             </form>
                             <div className="col-12 forgot">
                                 <a href="#">Forgot Password?</a>

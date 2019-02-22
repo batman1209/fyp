@@ -4,19 +4,19 @@ import '../css/form.css';
 import Sidebar from '../Component/sidebar/sidebar';
 
 const axios = require('axios');
-
 class Adduser extends React.Component<any, any> {
     constructor(props: any) {
         super(props);
 
         this.state = {
-            teacherId: 0,
+            userId: 0,
             name: '',
             email: '',
             password: '',
             confirmPassword: '',
             gender: '',
             question: [],
+            roleId: '',
             nameError: '',
             passError: '',
             emailError: ''
@@ -32,24 +32,37 @@ class Adduser extends React.Component<any, any> {
             axios.get('https://localhost:44310/api/Users/' + this.props.match.params.id)
                 .then((response: any) => {
                     this.setState({
-                        teacherId: response.data.teacherId,
+                        userId: response.data.userId,
                         name: response.data.name,
                         email: response.data.email,
                         password: response.data.password,
                         confirmPassword: response.data.confirmPassword,
                         gender: response.data.gender,
-                        role: response.data.role,
+                        roleId: response.data.roleID,
                         question: []
                     });
+                    console.log(this.state)
                 })
                 .catch((error: any) => {
                     console.log(error);
                 });
+                // axios.get('https://localhost:44310/api/Users/getRole')
+                // .then((response : any) => {
+                //   this.setState({
+                //      roleId: response.data.roleId
+                //   });
+                // });
         }
     }
 
     handleChange = (event: any) => {
+        debugger;
         this.setState({ [event.target.name]: event.target.value }, () => this.validateName())
+        console.log(event.target.value)
+    }
+
+    handleDropDown= (event: any) =>{
+        this.setState({[event.target.value] : event.target.value  });
     }
 
     handlePasswordChange = (event: any) => {
@@ -70,33 +83,33 @@ class Adduser extends React.Component<any, any> {
     validatePassword() {
         const { password } = this.state;
         this.setState({
-            passError: password.length > 6 ? null : 'Password must contain atleast 6 characters'
+            passError: password.length > 3 ? null : 'Password must contain atleast 6 characters'
         }
         )
     }
 
-    validateEmail(email: any) {
-        const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/;
-        const result = pattern.test(email);
-        if (result === true) {
-            this.setState({
-                emailError: false,
-                email: email
-            })
-        } else {
-            this.setState({
-                emailError: true
-            })
-        }
-        // email = $('email');
-        // var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        // if (filter.test(email.value)) {
-        //   // Yay! valid
-        //  return '';
-        // }
-        // else
-        //   return 'invalid email';
-    }
+    // validateEmail(email: any) {
+    //     const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/;
+    //     const result = pattern.test(email);
+    //     if (result === true) {
+    //         this.setState({
+    //             emailError: false,
+    //             email: email
+    //         })
+    //     } else {
+    //         this.setState({
+    //             emailError: true
+    //         })
+    //     }
+    //     // email = $('email');
+    //     // var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    //     // if (filter.test(email.value)) {
+    //     //   // Yay! valid
+    //     //  return '';
+    //     // }
+    //     // else
+    //     //   return 'invalid email';
+    // }
     handleSubmit(event: any) {
         event.preventDefault();
         if (this.props.match.params.id != undefined) {
@@ -112,6 +125,13 @@ class Adduser extends React.Component<any, any> {
                     .catch(function (error: any) {
                         console.log(error);
                     });
+                    axios.put('https://localhost:44310/api/users/getRole', this.state.roleId)
+                    .then((response : any) => {
+                        this.props.history.push('/');
+                      }).catch(function (error: any) {
+                        console.log(error);
+                    });
+                    
             }
         } else {
             const { password, confirmPassword, name } = this.state
@@ -120,10 +140,12 @@ class Adduser extends React.Component<any, any> {
 
             }
             else {
+               
                 axios.post('https://localhost:44310/api/Users/', this.state)
                     .then((response: any) => {
                         console.log(response);
-                        alert('User has been added successfully')
+                        alert('User has been added successfully');
+                        this.props.history.push('/');
                     })
                     .catch(function (error: any) {
                         console.log(error);
@@ -194,11 +216,11 @@ class Adduser extends React.Component<any, any> {
                                                 </div>
                                                 <br />
                                                 <div className="col-lg-12">
-                                                    <select className="form-control" name="role" value={this.state.role} onChange={this.handleChange} id="sel" style={{ marginTop: "35px" }} required>
-                                                        <option>Role</option>
-                                                        <option>Admin</option>
-                                                        <option>Teacher</option>
-                                                        <option>TeamLead</option>
+                                                    <select className="form-control" name="roleId" value={this.state.roleId} onChange={this.handleChange} id="sel" style={{ marginTop: "35px" }} required>
+                                                        <option disabled> Role</option>
+                                                        <option value="1">Admin</option>
+                                                        <option value="2">Teacher</option>
+                                                        <option value="3">TeamLead</option>
                                                     </select>
                                                 </div>
                                                 <br />
