@@ -14,7 +14,7 @@ class Login extends React.Component<any, any> {
     constructor(props: any){
         super(props);
         this.state = {
-          name: '',
+          userName: '',
           password: ''
         };
         this.handleChange = this.handleChange.bind(this);
@@ -35,13 +35,13 @@ class Login extends React.Component<any, any> {
                             <form className="col-12">
 
                                 <div className="form-group">
-                                    <input type="text" className="form-control" name="name" value={this.state.name} onChange={this.handleChange} placeholder="Enter Username" />
+                                    <input type="text" className="form-control" name="userName" value={this.state.userName} onChange={this.handleChange} placeholder="Enter Username" />
 
                                 </div>
                                 <div className="form-group">
                                     <input type="password" className="form-control"  name="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter Password" />
                                 </div>
-                                <button type="button" className="btn" onClick={() => { fakeAuth.authenticate(this.state) ; this.props.history.push('/'); }}><i className="fas fa-sign-in-alt"></i>Login</button>
+                                <button type="button" className="btn" onClick={() => { fakeAuth.authenticate(this.state) ; this.props.history.push('/')   }}><i className="fas fa-sign-in-alt"></i>Login</button>
                             </form>
                             <div className="col-12 forgot">
                                 <a href="#">Forgot Password?</a>
