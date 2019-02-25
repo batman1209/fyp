@@ -5,7 +5,8 @@ import {
     Link,
     withRouter
 } from "react-router-dom";
-import fakeAuth from '../Component/private-route/fake-auth';
+import Auth from '../Component/private-route/Auth';
+import Home from './home';
 //import {withRouter} from 'react-router';
 
 const axios = require('axios');
@@ -41,7 +42,7 @@ class Login extends React.Component<any, any> {
                                 <div className="form-group">
                                     <input type="password" className="form-control"  name="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter Password" />
                                 </div>
-                                <button type="button" className="btn" onClick={() => { fakeAuth.authenticate(this.state) ; this.props.history.push('/')   }}><i className="fas fa-sign-in-alt"></i>Login</button>
+                                <button type="button" className="btn" onClick={() => { Auth.authenticate(this.state) , this.props.history.push('/')   }}><i className="fas fa-sign-in-alt"></i>Login</button>
                             </form>
                             <div className="col-12 forgot">
                                 <a href="#">Forgot Password?</a>

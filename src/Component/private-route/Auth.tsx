@@ -1,24 +1,19 @@
 import { Session } from "inspector";
-import * as React from 'react';
 
 const axios = require("axios");
 const Auth = {
 
     isAuthenticated: false,
+    
     authenticate(user: any) {
     axios.post('https://localhost:44310/api/users/login', user )
         .then((response : any) => { 
-           
-            console.log( response)
-            var token = response.data
-            console.log(token)
-            // this.isAuthenticated = true;
+            console.log(response)
+            var token = response.data;
             if(token) {
-               this.isAuthenticated = true;
-               sessionStorage.setItem('token', token)
-           // window.location.href = '/'
-        //    this.props.history.push('/')
-            
+                this.isAuthenticated = true;
+                sessionStorage.setItem('token', token)
+               
             }
         })
         .catch((error : any) => {
@@ -26,9 +21,9 @@ const Auth = {
         })
      },
     signout(cb: any) {
-        // clear sesion
+        
         this.isAuthenticated = false;
-        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('token')
     },
     getValue() {
         return this.isAuthenticated;

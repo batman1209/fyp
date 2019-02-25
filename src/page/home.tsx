@@ -2,7 +2,7 @@ import * as React from 'react';
 import { any } from 'prop-types';
 import '../css/button.css';
 import { Link } from 'react-router-dom';
-import fakeAuth from '../Component/private-route/fake-auth';
+import fakeAuth from '../Component/private-route/Auth';
 import Sidebar from '../Component/sidebar/sidebar';
 
 const axios = require('axios');
