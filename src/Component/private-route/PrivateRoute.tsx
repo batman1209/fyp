@@ -7,7 +7,6 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => (
         render={props =>
             Auth.isAuthenticated ? (
                 <Component {...props} />
-               
             ) : (
                     <Redirect
                         to={{
@@ -15,7 +14,6 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => (
                             state: { from: props.location }
                         }}
                     />
-                   //<Component {...props} />
                 )
         }
     />
